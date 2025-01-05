@@ -1,0 +1,367 @@
+/* General body styling */
+
+* {
+  margin: 0%;
+  padding: 0%;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: #f7f7f7;
+  color: #333;
+}
+
+a{
+  text-decoration: none;
+  /* color: #102039; */
+  color: white;
+  font-size: 140%;
+}
+
+header {
+  position: fixed; /* يجعل الـ header ثابت أعلى الصفحة */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* التأكد من ظهور الـ header أعلى العناصر الأخرى */
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+  background-color: transparent; 
+  display: flex;
+}
+header.scrolled {
+  background-color: #102039a6; /* خلفية نصف شفافة */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل */
+}
+
+/* الحالة عندما نمر للأسفل */
+header.hide {
+  transform: translateY(-100%); /* نقل الـ header خارج الشاشة */
+}
+
+/* الحالة عند العودة للأعلى */
+header.show {
+  transform: translateY(0); /* إرجاع الـ header إلى مكانه */
+}
+
+header ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+header ul li{
+  margin-right: 30px;
+  transform: translateX(-10px);
+}
+
+header ul li a{
+  padding: 6px 15px;
+  border-radius: 20px;
+}
+
+header ul li a:hover {
+  background-color: #102039;
+  color: #fff;
+}
+
+.search input {
+  position: absolute;
+  left: 1265px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  height: 30px;
+  padding: 0 10px;
+  box-shadow: 20px 8px 20px rgba(24, 42, 97, 0.75) ;
+  transform: translateY(85px);
+}
+
+.search button{
+  position: absolute;
+  left: 1387px;
+  transform: translateY(85px);
+  height: 30px;
+  width: 60px;
+  border-radius:50px ;
+  background-color: #102039;
+  color: #fcfcfc;
+  border: none;
+}
+
+.search button:hover{
+  background-color:#3fd0d4;
+  background-image: url(images/magnifying-black.png) ;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.button{
+  transform: translateX(1128px);
+}
+
+/* js */
+.main {
+  background-image: url(images/background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: 0px;
+  background-attachment: fixed;
+
+  position: relative; /* مهم لتحديد السياق للعناصر المضافة */
+}
+
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* تحديد العناصر في منتصف الشاشة */
+  color: white;
+  text-align: center;
+}
+/* js */
+
+.content {
+  background-color: rgba(0, 0, 0, 0.372);
+  background-size: 1920px 1080px;
+  padding: 220px 0 200px;
+}
+
+.logo {
+  width: 15%;
+  height: 15%;
+}
+
+.font {
+  font-family: "Caveat", cursive;
+}
+
+.main h1 {
+  color: white;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.main p {
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  margin: 0;
+}
+/* Description Section */
+
+.description-section {
+  text-align: center;
+  padding: 20px;
+  background: #ffffff;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+}
+
+.description-section h2 {
+  margin-bottom: 10px;
+  color: #3fd0d4;
+}
+
+.description-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #102039;
+}
+/* Gallery Section */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin: 20px;
+  padding: 20px;
+}
+
+.landmark {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transform: translateX(100%);  /* بداية الكرت من خارج الشاشة من الجهة اليمنى */
+  opacity: 0;  /* إخفاء الكرت في البداية */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+.landmark.visible {
+    transform: translateX(0);  /* الكرت يتحرك إلى وضعه الطبيعي */
+    opacity: 1;  /* يظهر الكرت تدريجياً */
+  }
+
+.landmark img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.landmark:hover img {
+  transform: scale(1.1);
+}
+
+.landmark p {
+  padding: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #102039f5;
+}
+
+/* Comments Section */
+
+.comments-section {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: auto;
+}
+
+.comments-section h2 {
+  color: #0078d7;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.comment {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.comment strong {
+  color: #0078d7;
+}
+/* تنسيق الزر الذي يستخدم فئة 'add-comment-btn' */
+.add-comment-btn {
+    background-color: #0078D7;
+    color: white;
+    font-size: 16px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px; /* حواف دائرية لتتناسب مع شكل الصفحة */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* تأثير التحول عند التفاعل */
+    display: inline-block; /* تحديد طريقة العرض */
+    text-align: center; 
+    margin: 10px auto;
+}
+
+.add-comment-btn:hover {
+    background-color: #005BB5;
+    transform: scale(1.1); /* تكبير الزر عند المرور عليه */
+}
+
+.add-comment-btn:focus {
+    outline: none; /* إزالة الحدود حول الزر عند الضغط */
+}
+
+.add-comment-btn:active {
+    background-color: #004090; /* اللون عند الضغط */
+    transform: scale(1.05); /* تأثير انكماش عند الضغط على الزر */
+}
+
+.tiktok {
+  width: 1.7%;
+  margin: 2px;
+}
+
+.twitter {
+  width: 1.7%;
+  margin: 2px;
+}
+
+.instagram {
+  width: 1.7%;
+  margin: 2px;
+}
+
+.facebook {
+  width: 1.7%;
+  margin: 2px;
+}
+
+/* js */
+.footer {
+  background-image: url(images/footer.jpg);
+  background-size: cover;
+  background-position: center;
+  clip-path: inset(20% 0 0 0);
+  width: 100%;
+  position: relative;
+  transition: background-position 0.3s ease-out;
+}
+
+footer.show {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+/* js */
+
+.logo2 {
+  transform: translateX(500px);
+  margin-bottom: 8%;
+  margin-top: 5%;
+  width: 35%;
+}
+
+.content2 {
+  background-color: rgba(0, 0, 0, 0.372);
+  background-size: 1920px 1080px;
+}
+
+.part1 {
+  position: absolute;
+  margin-left: 6%;
+  list-style: none;
+  color: #fff;
+  transform: translateY(-300px);
+  font-family: "Caveat", cursive;
+  font-size: 130%;
+}
+
+.links1 {
+  position: absolute;
+  transform: translateY(-300px);
+  margin-left: 77%;
+  color: #fff;
+  font-family: "Caveat", cursive;
+  font-size: 130%;
+}
+.links1 b {
+  font-size: 26px;
+}
+
+.links2 {
+  position: absolute;
+  transform: translateY(-241px);
+  margin-left: 90%;
+  color: #fff;
+  font-family: "Caveat", cursive;
+  font-size: 130%;
+}
